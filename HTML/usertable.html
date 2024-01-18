@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/usertable.css">
+    <title>User List Page</title>
+</head>
+<body>
+    
+    <div class="user-list-container">
+        <h2>Registered Users</h2>
+        <div class="table-container">
+            <div class="table-header">
+                <div class="header-cell">Users</div>
+                <div class="header-cell">Actions</div>
+            </div>
+            <div id="userList" class="table-body"></div>
+        </div>
+    </div>
+    <div id="logout">
+        <button id="logoutButton" onclick="logout(event)">Logout</button>
+    </div>
+
+    <script>
+        // Load user data from local storage and append to the list
+        document.addEventListener('DOMContentLoaded', function() {
+            const userListContainer = document.getElementById('userList');
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            users.sort((a, b) => a.username.localeCompare(b.username));
+
+            // Extract username and password from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentUsername = urlParams.get('username');
+            const currentPassword = urlParams.get('password');
+
+            users.forEach(user => {
+                if(user.username===currentUsername){
+                    return ;
+                }
+                const tableRow = document.createElement('div');
+                tableRow.classList.add('table-row');
+
+                const userCell = document.createElement('div');
+                userCell.classList.add('table-cell', 'user-cell');
+                userCell.textContent = user.username;
+                
+                const actionCell = document.createElement('div');
+                actionCell.classList.add('table-cell', 'action-cell');
+
+                const startChatButton = document.createElement('button');
+                startChatButton.textContent = 'Start Chat';
+                startChatButton.addEventListener('click', function() {
+                    openChatPage(user.username, currentUsername);
+                });
+                actionCell.appendChild(startChatButton);
+                tableRow.appendChild(userCell);
+                tableRow.appendChild(actionCell);
+
+                userListContainer.appendChild(tableRow);
+            });
+        });
+
+        function openChatPage(clickedUsername, currentUsername) {
+            // Encode usernames to handle potential special characters
+            const encodedClickedUsername = encodeURIComponent(clickedUsername);
+            const encodedCurrentUsername = encodeURIComponent(currentUsername);
+
+            // Pass both usernames as parameters to the chat page
+            window.location.href = `chat.html?clickedUser=${encodedClickedUsername}&currentUser=${encodedCurrentUsername}`;
+        }
+        function logout(event) {
+            
+            window.location.href = '..//index.html';
+        }
+    </script>
+</body>
+</html>

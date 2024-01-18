@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..//CSS/register.css">
+    <link rel="stylesheet" href="..//CSS/style.css">
+    <title>Register Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div><a href="..//index.html"><h2>Chat App</h2></a></div>
+        </div>
+        <div class="right">
+            <!-- <div><a href="./login.html"><h3 class="list">Login</h3></a></div>
+            <div><a href="./register.html"><h3 class="list">Register</h3></a></div> -->
+        </div>
+    </div>
+    <div class="register-form"> 
+        <div class="register-container">
+            <form>
+                <h3>Register Form</h3>
+                <label for="username">Full Name:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit"><h5>Register</h5></button>
+                <button type="button" onclick="openRegisterPage()"><h5>Login</h5></button>
+            </form>
+        </div>
+    </div>  
+    <script defer src="..//JavaScript/register.js"></script>
+    <script>
+        function openRegisterPage() {
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div><a href="./index.html"><h2>Chat App</h2></a></div>
+        </div>
+        <div class="right">
+            <div><a href="./HTML/login.html"><h3 class="list">Login</h3></a></div>
+            <div><a href="./HTML/register.html"><h3 class="list">Register</h3></a></div>
+        </div>
+    </div>
+    <div class="image">
+        <div><img src="assets/image.jpeg" class="imagesize"></div> 
+        <button class="start" onclick="openLoginPage()">Let's Start</button>
+    </div>
+    <script>
+        function openLoginPage() {
+            window.location.href = "./HTML/login.html";
+        }
+    </script>
+
+</body>
+</html>
